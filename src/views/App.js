@@ -29,15 +29,15 @@ import ModalSwitch from "./ModalSwitch";
 
 export default function App() {
   const [isUser, setisUser] = useState(true)
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('logged_in_token'))
-    try {
-      let isLoggedIn = storedData.logged_in
-      isLoggedIn ? setisUser(isLoggedIn) : setisUser(false)
-    } catch (err) {
-      setisUser(false)
-    }
-  }, [])
+  // useEffect(() => {
+  //   const storedData = JSON.parse(localStorage.getItem('logged_in_token'))
+  //   try {
+  //     let isLoggedIn = storedData.logged_in
+  //     isLoggedIn ? setisUser(isLoggedIn) : setisUser(false)
+  //   } catch (err) {
+  //     setisUser(false)
+  //   }
+  // }, [])
 
   return (
     <React.Fragment>
