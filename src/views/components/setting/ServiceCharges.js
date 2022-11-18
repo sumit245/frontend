@@ -75,7 +75,32 @@ export default function ServiceCharges() {
         </div>
       </div>
       {/* Commission */}
-
+      <div className="row">
+        <div className="col-lg-12">
+          <div className="form-group">
+            <label>
+              Delivery Commission (1 Meal){" "}
+              <strong className="text-danger">*</strong>
+            </label>
+            <div className="input-group m-b">
+              <div className="input-group-prepend">
+                <span className="input-group-addon">$</span>
+              </div>
+              <input
+                type="text"
+                className="form-control"
+                name="delivery_2_fee"
+                onChange={(e) => onChangeText(e)}
+                defaultValue={charges.delivery_2_fee}
+              />
+              <div className="input-group-append">
+                <span className="input-group-addon">.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Delivery 1 Meals */}
       <div className="row">
         <div className="col-lg-12">
           <div className="form-group">
@@ -102,6 +127,33 @@ export default function ServiceCharges() {
         </div>
       </div>
       {/* Delivery 2 Meals */}
+
+      <div className="row">
+        <div className="col-lg-12">
+          <div className="form-group">
+            <label>
+              Delivery Commission (7 Meals){" "}
+              <strong className="text-danger">*</strong>
+            </label>
+            <div className="input-group m-b">
+              <div className="input-group-prepend">
+                <span className="input-group-addon">$</span>
+              </div>
+              <input
+                type="text"
+                className="form-control"
+                name="delivery_15_fee"
+                onChange={(e) => onChangeText(e)}
+                defaultValue={charges.delivery_15_fee}
+              />
+              <div className="input-group-append">
+                <span className="input-group-addon">.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Delivery 7 Meals */}
 
       <div className="row">
         <div className="col-lg-12">
