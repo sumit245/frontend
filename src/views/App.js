@@ -28,7 +28,7 @@ import CommissionTracking from "./components/payments/CommissionTracking";
 import ModalSwitch from "./ModalSwitch";
 
 export default function App() {
-  const [isUser, setisUser] = useState(false)
+  const [isUser, setisUser] = useState(true)
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('logged_in_token'))
     try {
