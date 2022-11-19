@@ -335,6 +335,11 @@ export const restaurantColumns = [
     sortable: true,
   },
   {
+    name: "Country",
+    selector: (row, index) => row.country,
+    sortable: true,
+  },
+  {
     name: "Actions",
     center: true,
     selector: (row) => (
@@ -385,10 +390,10 @@ export const orderColumns = [
       row.plan === "twoPlan"
         ? "2 Meals"
         : row.plan === "fifteenPlan"
-        ? "15 Meals"
-        : row.plan === "thirtyPlan"
-        ? "30 Meals"
-        : null,
+          ? "15 Meals"
+          : row.plan === "thirtyPlan"
+            ? "30 Meals"
+            : null,
     sortable: true,
   },
   {
@@ -660,10 +665,10 @@ export const payColumns = [
       "$" +
       parseFloat(
         row.totalMerchAmt +
-          row.totalAddOnAmt -
-          row.totalCommissionAmt -
-          row.totalDiscount -
-          row.totalBannerDue
+        row.totalAddOnAmt -
+        row.totalCommissionAmt -
+        row.totalDiscount -
+        row.totalBannerDue
       ).toFixed(2),
     width: "114px",
     sortable: true,
@@ -681,10 +686,10 @@ export const payColumns = [
       "$" +
       parseFloat(
         row.totalMerchAmt +
-          row.totalAddOnAmt -
-          row.totalCommissionAmt -
-          row.totalDiscount -
-          row.totalBannerDue
+        row.totalAddOnAmt -
+        row.totalCommissionAmt -
+        row.totalDiscount -
+        row.totalBannerDue
       ).toFixed(2),
     sortable: true,
     width: "114px",
@@ -734,9 +739,8 @@ export const transactionColumns = [
     selector: (row, index) => (
       <div>
         <Link
-          className={`btn ${
-            row.status === "Paid" ? "btn-secondary" : "btn-primary"
-          } mx-2 my-1`}
+          className={`btn ${row.status === "Paid" ? "btn-secondary" : "btn-primary"
+            } mx-2 my-1`}
           to={{ pathname: `/deposit_money/${index}`, query: { ...row } }}
         >
           {row.status === "Paid" ? "Paid" : "Pay"}
