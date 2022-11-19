@@ -6,23 +6,23 @@ import PromotionCard from "../components/promotions/PromotionCard";
 
 export default function Promos() {
   const [coupons, setCoupon] = useState([]);
-  const [promos, setPromos] = useState([]);
+  // const [promos, setPromos] = useState([]);
   const getcoupons = async () => {
     const response = await axios.get("/api/promo/");
     const { data } = await response.data;
     setCoupon(data);
   };
 
-  const getPromos = async () => {
-    const response = await axios.get("/api/coupon/promo");
-    const data = await response.data;
-    const promotions = await data.data;
-    setPromos(promotions);
-  };
+  // const getPromos = async () => {
+  //   const response = await axios.get("/api/coupon/promo");
+  //   const data = await response.data;
+  //   const promotions = await data.data;
+  //   setPromos(promotions);
+  // };
 
   useEffect(() => {
     getcoupons();
-    getPromos();
+    // getPromos();
   }, [coupons]);
   return (
     <div className="wrapper wrapper-content">

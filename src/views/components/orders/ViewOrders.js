@@ -43,7 +43,7 @@ export const ViewOrders = () => {
     if (orderfetched) {
       fetchRestaurant();
     }
-  }, [orderfetched, fetchRestaurant]);
+  }, [orderfetched]);
 
   const {
     order_time,
@@ -87,34 +87,6 @@ export const ViewOrders = () => {
     0.01 *
     taxes;
   const downloadPdf = async () => {
-    const res = await axios.post("/api/orders/create-pdf", {
-      order_time,
-      add_on,
-      time,
-      address,
-      category,
-      discount,
-      email_id,
-      end_date,
-      meal_type,
-      notes,
-      order_id,
-      card,
-      phone,
-      plan,
-      price,
-      delivery_fee,
-      restaurant_id,
-      service_fee,
-      taxes,
-      tip,
-      total,
-      restaurant,
-      start_date,
-      user_id,
-      user_name,
-      restaddress,
-    });
     const response = await axios.get("/api/orders/fetch-pdf", {
       responseType: "blob",
     });
@@ -161,10 +133,10 @@ export const ViewOrders = () => {
                   <br />
                   {address &&
                     address.address_type +
-                      ", " +
-                      address.flat_num +
-                      ", " +
-                      (address.locality || "")}
+                    ", " +
+                    address.flat_num +
+                    ", " +
+                    (address.locality || "")}
                   <br />
                   {address && address.city + ", " + address.postal_code}
                   <br />
@@ -198,8 +170,8 @@ export const ViewOrders = () => {
                           {plan === "twoPlan"
                             ? "2 Meals"
                             : plan === "fifteenPlan"
-                            ? "15 Meals"
-                            : "30 Meals"}
+                              ? "15 Meals"
+                              : "30 Meals"}
                         </strong>
                       </div>
                       <small>{meal_type + ", " + category + "-" + time}</small>

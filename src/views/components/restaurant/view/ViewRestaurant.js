@@ -1,13 +1,13 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import StepWizard from "react-step-wizard";
 import BasicInfo from "./ViewBasicInfo";
 import Documents from "./ViewDocuments";
 import BankInfo from "./ViewBankInfo";
-// import Meals from "./ViewMeals";
+import Meals from "./ViewMeals";
 // import Plans from "./ViewPlans";
 import RestaurantTabNav from "../RestaurantTabNav";
 import { useParams } from 'react-router'
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getRestaurant } from "../../../../actions/restaurantAction";
 
 export default function ViewRestaurant(props) {
@@ -15,7 +15,7 @@ export default function ViewRestaurant(props) {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getRestaurant(id))
-  }, [dispatch,id])
+  }, [dispatch, id])
   return (
     <div className="wrapper wrapper-content">
       <div className="col-lg-12">
@@ -31,8 +31,8 @@ export default function ViewRestaurant(props) {
               >
                 <BasicInfo stepName={"Basic"} hashKey={"basic"} />
                 <Documents stepName={"Documents"} hashKey={"docs"} />
-                {/* <Meals stepName={"Meals"} hashKey={"meals"} />
-                <Plans stepName={"Plans"} hashKey={"plans"} /> */}
+                <Meals stepName={"Meals"} hashKey={"meals"} />
+                {/* <Plans stepName={"Plans"} hashKey={"plans"} /> */}
                 <BankInfo stepName={"Bank Info"} hashKey={"bank_info"} />
               </StepWizard>
             </div>
