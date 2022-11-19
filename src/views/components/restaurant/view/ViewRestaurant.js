@@ -1,10 +1,10 @@
 import React,{useEffect} from "react";
 import StepWizard from "react-step-wizard";
-import BankInfo from "./ViewBankInfo";
 import BasicInfo from "./ViewBasicInfo";
 import Documents from "./ViewDocuments";
-import Meals from "./ViewMeals";
-import Plans from "./ViewPlans";
+import BankInfo from "./ViewBankInfo";
+// import Meals from "./ViewMeals";
+// import Plans from "./ViewPlans";
 import RestaurantTabNav from "../RestaurantTabNav";
 import { useParams } from 'react-router'
 import {useDispatch} from 'react-redux'
@@ -31,8 +31,8 @@ export default function ViewRestaurant(props) {
               >
                 <BasicInfo stepName={"Basic"} hashKey={"basic"} />
                 <Documents stepName={"Documents"} hashKey={"docs"} />
-                <Meals stepName={"Meals"} hashKey={"meals"} />
-                <Plans stepName={"Plans"} hashKey={"plans"} />
+                {/* <Meals stepName={"Meals"} hashKey={"meals"} />
+                <Plans stepName={"Plans"} hashKey={"plans"} /> */}
                 <BankInfo stepName={"Bank Info"} hashKey={"bank_info"} />
               </StepWizard>
             </div>
