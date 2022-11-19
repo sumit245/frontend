@@ -1,23 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function Meals(props) {
   const { meals } = useSelector((state) => state.restaurant);
+  const [meal_plan, setMealPlan] = useState([])
 
   useEffect(() => {
     let componentMounted = true
     if (componentMounted) {
-      console.log('====================================');
-      console.log(meals);
-      console.log('====================================');
+      setMealPlan(meals)
     }
   }, [props])
 
   return (
     <div className="row mt-2">
 
-      {meals &&
-        meals.map((meal, key) => (
+      {meal_plan &&
+        meal_plan.map((meal, key) => (
           <div className="row mt-2" key={key}>
             <div className="col-lg-12">
               <div className="ibox px-4">

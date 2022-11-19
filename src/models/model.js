@@ -15,6 +15,7 @@ export const restaurant = {
   category: "",
   meal_type: "",
   meals: [],
+  price_plans: [],
   documents: [{ restaurant_image: "" }, { banner_image: "" }],
   papers: [],
   account_name: "",

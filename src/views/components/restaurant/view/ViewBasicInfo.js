@@ -25,8 +25,8 @@ export default function BasicInfo(props) {
   return (
     <fieldset>
       <div className="row m-b-lg m-t-lg">
-        <div className="col-md-6">
-          <div className="row">
+        <div className="col-6">
+          <div className="row align-items-center">
             <div className="profile-image">
               <img
                 src={documents && documents[0].restaurant_image}
@@ -58,7 +58,7 @@ export default function BasicInfo(props) {
             </div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-3">
           <table className="table small m-b-xs">
             <tbody>
               <tr>
@@ -87,7 +87,7 @@ export default function BasicInfo(props) {
             </tbody>
           </table>
         </div>
-        <div className="col-md-3">
+        <div className="col-3">
           <small>Sales in last month</small>
           <h2 className="no-margins">0</h2>
         </div>
