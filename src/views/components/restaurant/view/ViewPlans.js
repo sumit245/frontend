@@ -9,9 +9,6 @@ export default function Plans(props) {
     let componentMounted = true
     if (componentMounted) {
       setPlans(price_plans)
-      console.log('=========Plans=====================');
-      console.log(plans);
-      console.log('====================================');
       setLoading(true)
     }
     return () => {

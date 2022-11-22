@@ -271,6 +271,7 @@ export default function EditBasicInfo(props) {
             >
               <option value="Lunch">Lunch</option>
               <option value="Dinner">Dinner</option>
+              <option value="Both">Both</option>
             </select>
           </div>
         </div>
