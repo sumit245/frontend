@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from "react";
 import Table from "../../utilities/Table";
 import { restaurantColumns } from "../../utilities/utility";
-import axios from "axios";
 import RestaurantCards from "../components/restaurant/RestaurantCards";
+import { getRestaurants } from "../../actions/restaurantAction";
+import Loading from "../../utilities/Loading";
 
-const httpClient = axios.create();
-httpClient.defaults.timeout = 90000;
+
 
 export default function Restaurant() {
   const [restaurant, setRestaurant] = useState([]);
-  useEffect(() => {
-    httpClient
-      .get("/api/newrest/")
-      .then((res) => {
-        setRestaurant(res.data);
-      })
-      .catch((err) => console.log(err));
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(async () => {
+    const restaurants = await getRestaurants()
+    setRestaurant(restaurants)
+    setLoaded(true)
   }, []);
+  if (!loaded) { return (<Loading />) }
   return (
     <div className="wrapper wrapper-content">
-      <RestaurantCards data={restaurant} />
-      <Table
-        title="Restaurant"
-        data={restaurant}
-        flag={true}
-        columns={restaurantColumns}
-      />
+      {
+        loaded && (<>
+          <RestaurantCards data={restaurant} />
+          <Table
+            title="Restaurant"
+            data={restaurant}
+            flag={true}
+            columns={restaurantColumns}
+          />
+        </>
+        )
+      }
     </div>
   );
 }

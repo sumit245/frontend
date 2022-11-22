@@ -22,9 +22,6 @@ export default function Plans(props) {
   }, [])
 
   const handleContinue = (e) => {
-    console.log('====================================');
-    console.log(inputPlan);
-    console.log('====================================');
     // const plans = {
     //   ...restaurant,
     //   ...inputPlan,
@@ -50,9 +47,6 @@ export default function Plans(props) {
   }
 
   const onBasePriceChange = (event, index) => {
-    console.log('====================================');
-    console.log(index);
-    console.log('====================================');
     const { name, value } = event.target
     let plans = inputPlan
     let currPlan = plans[index]

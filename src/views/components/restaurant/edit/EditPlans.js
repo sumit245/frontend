@@ -13,9 +13,6 @@ export default function EditPlans({ plan, restaurant, goToStep }) {
 
   const getPlansAndSet = async () => {
     const plans = await dispatch(getPlans())
-    console.log('====================================');
-    console.log(plans);
-    console.log('====================================');
     setPlans(plans)
   }
 

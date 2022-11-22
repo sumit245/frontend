@@ -26,7 +26,6 @@ export default function TransactionDetails() {
     );
     const { data } = response;
     setState(data);
-    console.log(data);
     setID(id);
   };
   const pastPayments = async (id) => {

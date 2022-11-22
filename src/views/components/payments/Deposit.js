@@ -6,7 +6,7 @@ import { useHistory, useLocation } from "react-router-dom";
 export default function Deposit() {
   const history = useHistory();
   const [state, setState] = useState({
-    restID:"",
+    restID: "",
     chefBalance: 0,
     account_number: 0,
     bank_name: 0,
@@ -24,7 +24,6 @@ export default function Deposit() {
   useEffect(() => {
     let component = true;
     setState(query);
-    console.log(query);
     return () => {
       component = false;
     };

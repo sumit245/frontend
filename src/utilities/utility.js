@@ -321,17 +321,17 @@ export const restaurantColumns = [
   },
   {
     name: "Email",
-    selector: "email",
+    selector: (row, index) => row.email,
     sortable: true,
   },
   {
     name: "Mobile",
-    selector: "phone",
+    selector: (row, index) => row.phone,
     sortable: true,
   },
   {
     name: "Status",
-    selector: "status",
+    selector: (row, index) => row.status,
     sortable: true,
   },
   {
