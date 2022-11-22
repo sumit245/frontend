@@ -106,6 +106,7 @@ export default function EditBasicInfo(props) {
               onChange={(e) => onChangeText(e)}
               type="text"
               className="form-control required"
+              required
             />
           </div>
           <div className="form-group">

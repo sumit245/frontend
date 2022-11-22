@@ -104,7 +104,6 @@ export default function EditMeals(props) {
     let componentMount = true;
     if (componentMount) {
       let { meals } = props.restaurant;
-      console.log(meals)
       Array.isArray(meals) && setMeals(meals);
     }
     return () => {
