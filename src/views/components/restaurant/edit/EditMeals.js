@@ -125,7 +125,7 @@ export default function EditMeals(props) {
                     <div className="row">
                       {
                         Array.isArray(meal.items) && meal.items.map((item, key) => (
-                          <div className="col-3">
+                          <div className="col-4">
                             <div className="ibox">
                               <div className="ibox-title" style={{ borderTopColor: "#fff" }}>
                                 {contentEditable && currentpos === key ? (
