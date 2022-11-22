@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import AddOnCard from './AddOnCard'
 
-export default function MealCard({ meal_name, meal_image, meal_day, meal_description, meal_slot, meal_type }) {
+export default function MealCard({ meal_name, meal_image, meal_day, meal_description, meal_slot, meal_type, meal_add_on }) {
     const [name, setName] = useState(meal_name)
     const [image, setImage] = useState(meal_image)
     const [day, setDay] = useState(meal_day)
@@ -8,12 +9,13 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
     const [slot, setSlot] = useState(meal_slot)
     const [type, setType] = useState(meal_type)
     const [editable, setEditable] = useState(false)
+    const [add_on, setAddOn] = useState(meal_add_on)
     const deleteMeal = () => { }
     const imageUpdate = () => { }
     const handleInputChange = (event) => { }
     return (
         <div className="col-6">
-            <div className="ibox card" style={{ height: 560 }}>
+            <div className="ibox card">
                 <div className="ibox-title" style={{ borderTopColor: "transparent" }}>
                     {editable ? (
                         <input
@@ -101,6 +103,7 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
                             )}
                         </div>
                     </div>
+                    <AddOnCard meal_add_on={add_on} />
                 </div>
             </div>
         </div>

@@ -133,6 +133,7 @@ export default function EditMeals(props) {
                             meal_slot={item.slot}
                             meal_day={item.day}
                             meal_type={item.type}
+                            meal_add_on={item.add_on}
                             key={key}
                           />
                         ))
