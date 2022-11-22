@@ -32,6 +32,16 @@ export const getRestaurants = async () => {
   const { data } = response
   return data
 };
+export const getCuisines = async () => {
+  const response = await httpClient.get('/api/cuisine');
+  const { data } = response
+  return data
+}
+export const saveCuisine = async (cuisine) => {
+  const response = await httpClient.post('/api/cuisine', cuisine)
+  const { msg } = response.data
+  return msg
+}
 export const editBasicInfo = (data) => {
   return { type: EDIT_BASIC_INFO, payload: data };
 };

@@ -13,8 +13,8 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
     const handleInputChange = (event) => { }
     return (
         <div className="col-6">
-            <div className="ibox card" style={{height:360}}>
-                <div className="ibox-title" style={{ borderTopColor: "#fff" }}>
+            <div className="ibox card" style={{ height: 560 }}>
+                <div className="ibox-title" style={{ borderTopColor: "transparent" }}>
                     {editable ? (
                         <input
                             name="day"
@@ -35,7 +35,7 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
                     </div>
                 </div>
                 <div className="ibox-content">
-                    <img src={image} className="img-fluid" alt="Meal" />
+                    <img src={image} className="img-fluid" alt="Meal" style={{ width: "100%", height: 220 }} />
                     <div className="mt-1" />
                     {editable && (
                         <div className="custom-file">
@@ -50,7 +50,7 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
                     )}
 
                     <div className="row mt-1">
-                        <div className="col-sm-8">
+                        <div className="col-8">
                             {editable ? (
                                 <input
                                     name="name"
@@ -59,10 +59,10 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
                                     onChange={(event) => handleInputChange(event)}
                                 />
                             ) : (
-                                <h4>{name}</h4>
+                                <h5 className='text-uppercase'>{name}</h5>
                             )}
                         </div>
-                        <div className="col-sm-4">
+                        <div className="col-4">
                             {editable ? (
                                 <input
                                     name="slot"
@@ -71,12 +71,12 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
                                     onChange={(event) => handleInputChange(event)}
                                 />
                             ) : (
-                                <h4>{slot}</h4>
+                                <h5 className='text-capitalize' style={{ fontSize: 10 }}>{slot}</h5>
                             )}
                         </div>
                     </div>
                     <div className="row mt-1">
-                        <div className="col-sm-8">
+                        <div className="col-8">
                             {editable ? (
                                 <input
                                     name="description"
@@ -85,10 +85,10 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
                                     onChange={(event) => handleInputChange(event)}
                                 />
                             ) : (
-                                <p>{description}</p>
+                                <p className='text-capitalize'>{description}</p>
                             )}
                         </div>
-                        <div className="col-sm-4">
+                        <div className="col-4">
                             {editable ? (
                                 <input
                                     name="type"
@@ -97,7 +97,7 @@ export default function MealCard({ meal_name, meal_image, meal_day, meal_descrip
                                     onChange={(event) => handleInputChange(event)}
                                 />
                             ) : (
-                                <h5>{type}</h5>
+                                <h5 className={`text-capitalize ${type}=='veg'?'text-success':'text-danger'`} style={{ fontSize: 8 }}>{type}</h5>
                             )}
                         </div>
                     </div>

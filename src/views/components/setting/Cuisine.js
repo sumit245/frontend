@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { getCuisines, saveCuisine } from "../../../actions/restaurantAction";
 import { imageUploader } from "../../../utilities/fileHandlers";
 import Loading from "../../../utilities/Loading";
 const Cuisine = () => {
@@ -8,20 +8,17 @@ const Cuisine = () => {
   const [image, setImage] = useState("");
   const [fileName, setFileName] = useState("Cuisine image");
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    axios
-      .get("/api/cuisine")
-      .then((res) => {
-        setCuisine(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  useEffect(async () => {
+    setLoading(true)
+    const cuisines = await getCuisines()
+    setCuisine(cuisines)
+    setLoading(false)
   }, []);
 
   const onChangeText = ({ target }) => {
     setCuisineName(target.value);
   };
+  
   const onImageChange = (e) => {
     let file = e.target.files[0];
     setFileName(file.name);
@@ -35,10 +32,9 @@ const Cuisine = () => {
       cuisineName: cuisineName,
     };
     setLoading(true);
-    const resp = await axios.post("/api/cuisine/", cuisine);
+    const msg = await saveCuisine(cuisine);
     setLoading(false);
-    const { data } = resp;
-    alert(data.msg);
+    alert(msg);
   };
 
   return !loading ? (
