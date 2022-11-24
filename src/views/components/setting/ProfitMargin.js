@@ -24,7 +24,7 @@ export default function ProfitMargin() {
     return () => {
       componentDidMount = false;
     };
-  }, []);
+  }, [dispatch, plans]);
 
   const onChangeText = ({ target }) => {
     const { name, value } = target;

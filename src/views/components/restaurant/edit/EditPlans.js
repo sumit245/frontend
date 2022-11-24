@@ -1,25 +1,59 @@
 import React, { useEffect, useState } from 'react'
+import { getProfitMargin } from '../../../../actions/restaurantAction'
 
 export default function EditPlans({ goToStep, restaurant }) {
   const [plans, setPlan] = useState([])
   const [isDelivery, setIsDelivery] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [profits, setProfits] = useState([])
+
+  useEffect(async () => {
+    let componentMount = true
+    if (componentMount) {
+      const profit = await getProfitMargin()
+      setProfits(profit)
+    }
+    return () => {
+      componentMount = true
+    }
+  }, [])
+
   useEffect(() => {
     let componentMount = true
     if (componentMount) {
-      console.log(restaurant.price_plans)
       setPlan(restaurant.price_plans)
       setIsDelivery(restaurant.isDelivery)
-      console.log(restaurant.isDelivery)
       setLoading(true)
     }
     return (() => {
       componentMount = false
     })
   }, [restaurant])
-  const onBasePriceChange = () => { }
+
+  const onBasePriceChange = (category, plan_name, e) => {
+    const { value } = e.target
+    let planToUpdate = plans
+    let currentPlan = planToUpdate[category].plans.find(plan => plan.plan_name === plan_name)
+    let foundIndex = planToUpdate[category].plans.findIndex(plan => plan.plan_name === plan_name)
+    const { profit_margin } = profits.find((plan) => plan.plan_name === plan_name)
+    currentPlan.base_price = value
+    currentPlan.customer_price = parseFloat(parseFloat(value) + parseFloat(profit_margin)).toString()
+    planToUpdate[category].plans[foundIndex] = currentPlan
+    setPlan(planToUpdate)
+    console.log('====================================');
+    console.log(plans);
+    console.log('====================================');
+  }
+
+  const onDeliveryPriceChange = (key, plan_name, e) => {
+
+  }
+
   const handleContinue = () => {
-    goToStep(5)
+    console.log('====================================');
+    console.log(plans);
+    console.log('====================================');
+    // goToStep(5)
   }
   const handleBack = () => {
     goToStep(3)
@@ -48,9 +82,8 @@ export default function EditPlans({ goToStep, restaurant }) {
             </div>
             <div className='ibox-content'>
               {
-
-                Array.isArray(price_plan.plans) && price_plan.plans.map((plan, key) => (
-                  <div className="form-group mt-1" key={key}>
+                Array.isArray(price_plan.plans) && price_plan.plans.map((plan, index) => (
+                  <div className="form-group mt-1" key={index}>
                     <label>
                       <strong>{plan.plan_name}</strong>
                     </label>
@@ -63,9 +96,8 @@ export default function EditPlans({ goToStep, restaurant }) {
                           <input
                             className="form-control"
                             type="currency"
-                            name="base_price"
                             defaultValue={plan.base_price}
-                            onChange={(e) => onBasePriceChange(e)}
+                            onChange={(e) => onBasePriceChange(key, plan.plan_name, e)}
                           />
                         </div>
                       </div>
@@ -75,9 +107,7 @@ export default function EditPlans({ goToStep, restaurant }) {
                           <input
                             className="form-control"
                             type="currency"
-                            name="customer_price"
                             defaultValue={plan.customer_price}
-                            disabled
                           />
                         </div>
                       </div>
@@ -88,7 +118,7 @@ export default function EditPlans({ goToStep, restaurant }) {
                             className="form-control"
                             type="currency"
                             name="delivery_price"
-                            onChange={(e) => onBasePriceChange(e)}
+                            onChange={(e) => onDeliveryPriceChange(key, plan.plan_name, e)}
                             defaultValue={plan.delivery_price}
                             disabled={!isDelivery}
                           />
@@ -99,17 +129,9 @@ export default function EditPlans({ goToStep, restaurant }) {
                 ))
               }
             </div>
-
-
           </div>
         ))
       }
-      {/* {
-        loading && plans.map((data, key) => (
-
-        ))
-      } */}
-
       <div className="row">
         <div className="col-lg-12 justify-content-end">
           <button

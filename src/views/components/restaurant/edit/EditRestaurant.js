@@ -19,19 +19,21 @@ export default function EditRestaurant(props) {
   const [plan, setPlan] = useState({});
 
   const onRadioSelected = ({ target }) => {
+    const { name, value } = target
     setRestaurant((prevState) => ({
       ...prevState,
-      [target.name]: target.value,
+      [name]: value,
     }));
   };
 
   const onSubmit = async (e) => {
     setLoaded(false);
     e.preventDefault();
-    const response = await axios.put("/api/newrest/" + id, state);
-    if (response !== null) {
-      alert("Restaurant Updated");
-    }
+    console.log(state)
+    // const response = await axios.put("/api/newrest/" + id, state);
+    // if (response !== null) {
+    //   alert("Restaurant Updated");
+    // }
     setLoaded(true);
   };
 
@@ -69,11 +71,7 @@ export default function EditRestaurant(props) {
               <h5>Edit Restaurant</h5>
             </div>
             <div className="ibox-content">
-              <form
-                id="form"
-                className="wizard-big"
-                onSubmit={(e) => onSubmit(e)}
-              >
+              <form onSubmit={(e) => onSubmit(e)}>
                 <div className="row justify-content-end mt-2">
                   <div className="form-check form-check-inline">
                     <input
@@ -138,7 +136,6 @@ export default function EditRestaurant(props) {
                   <EditPlans
                     stepName={"Plans"}
                     hashKey={"plans"}
-                    plan={plan}
                     restaurant={restaurant}
                   />
                   <EditBankInfo

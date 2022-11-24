@@ -8,17 +8,20 @@ const Cuisine = () => {
   const [image, setImage] = useState("");
   const [fileName, setFileName] = useState("Cuisine image");
   const [loading, setLoading] = useState(false);
-  useEffect(async () => {
-    setLoading(true)
-    const cuisines = await getCuisines()
-    setCuisine(cuisines)
-    setLoading(false)
+  useEffect(() => {
+    async function fetchCuisine() {
+      setLoading(true)
+      const cuisines = await getCuisines()
+      setCuisine(cuisines)
+      setLoading(false)
+    }
+    fetchCuisine()
   }, []);
 
   const onChangeText = ({ target }) => {
     setCuisineName(target.value);
   };
-  
+
   const onImageChange = (e) => {
     let file = e.target.files[0];
     setFileName(file.name);

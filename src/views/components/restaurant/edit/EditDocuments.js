@@ -34,14 +34,6 @@ export default function EditDocuments(props) {
     props.goToStep(1);
   };
   const handleContinue = (e) => {
-    if (!profile) {
-      alert("Profile picture is required");
-      return;
-    }
-    if (!banner) {
-      alert("Banner image is required");
-      return;
-    }
     dispatch(editDocuments([profile, banner], [...papers]));
     props.goToStep(3);
   };
@@ -55,6 +47,8 @@ export default function EditDocuments(props) {
   const imageUpdater = ({ target }, key) => {
     let paper = [...papers];
     let file = target.files[0];
+    const { name } = file
+    setFileName(name)
     imageUploader(file, (result) => {
       try {
         paper[key].image = result;

@@ -8,11 +8,14 @@ import Loading from "../../utilities/Loading";
 export default function Restaurant() {
   const [restaurant, setRestaurant] = useState([]);
   const [loaded, setLoaded] = useState(false)
-  
-  useEffect(async () => {
-    const restaurants = await getRestaurants()
-    setRestaurant(restaurants)
-    setLoaded(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      const restaurants = await getRestaurants()
+      setRestaurant(restaurants)
+      setLoaded(true)
+    }
+    fetchData();
   }, []);
 
   if (!loaded) { return (<Loading />) }

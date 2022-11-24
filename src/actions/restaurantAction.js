@@ -32,6 +32,11 @@ export const getRestaurants = async () => {
   const { data } = response
   return data
 };
+export const getProfitMargin = async () => {
+  const response = await httpClient.get('/api/plans/getProfitMargin')
+  const { data } = response
+  return data
+}
 export const getCuisines = async () => {
   const response = await httpClient.get('/api/cuisine');
   const { data } = response
